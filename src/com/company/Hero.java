@@ -10,7 +10,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Hero {
-    int exp=0, dmgLvl=1, helth=100, speed=20, aids=0, gold=0; // ;)
+    private int exp=0, dmgLvl=1, health =100, speed=20, aids=0, gold=0; // ;)
     // (если ты жто прочёл то ты этим^ заражён, перешли это другу и избавься от этого)
     Item item = new Item();
     Enemy enemy = new Enemy();
@@ -27,7 +27,8 @@ public class Hero {
 
     void attack() {
         enemy.setHelth(enemy.getHelth()-(item.getDamage()*dmgLvl+(int)(Math.random()*10+1)));
-        helth = helth-(enemy.getAttack()+(int)(Math.random()*5+1));
+        health = health -(enemy.getAttack()+(int)(Math.random()*5+1));
+        checkHealth();
     }
 
     void kill() {
@@ -35,7 +36,8 @@ public class Hero {
     }
 
     void defence() {
-        helth = helth-((enemy.getAttack()+(int)(Math.random()*5+1))/item.getDefense());
+        health = health -((enemy.getAttack()+(int)(Math.random()*5+1))/item.getDefense());
+        checkHealth();
     }
 
     void carry(String carryingItem) {
@@ -49,7 +51,7 @@ public class Hero {
         aids = 10;
         exp=0;
         dmgLvl=1;
-        helth=100;
+        health =100;
         speed=20;
     }
 
@@ -58,6 +60,75 @@ public class Hero {
         speed+=10;
     }
 
+    void checkHealth() {
+        if (health <=0) {
+            respawn();
+        }
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public int getDmgLvl() {
+        return dmgLvl;
+    }
+
+    public void setDmgLvl(int dmgLvl) {
+        this.dmgLvl = dmgLvl;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getAids() {
+        return aids;
+    }
+
+    public void setAids(int aids) {
+        this.aids = aids;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public String[] getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(String[] abilities) {
+        this.abilities = abilities;
+    }
+
+    public ArrayList<String> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<String> items) {
+        this.items = items;
+    }
 }
 class Location {
     double x;

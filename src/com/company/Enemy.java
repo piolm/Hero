@@ -1,9 +1,9 @@
 package com.company;
 
 public class Enemy {
-    int helth;
-    int attack;
-    int possibleExpDrop;
+    private int helth;
+    private int attack;
+    private int possibleExpDrop;
 
     public int getPossibleExpDrop() {
         return possibleExpDrop;

@@ -1,8 +1,8 @@
 package com.company;
 
 public class Item {
-    int damage;
-    int defense;
+    private int damage;
+    private int defense;
 
     public int getDefense() {
         return defense;
